@@ -6,8 +6,11 @@ import 'package:event_app/components/custom_text.dart';
 import 'package:event_app/screens/friendslist_screen.dart';
 import 'package:event_app/screens/general_party_screen.dart';
 import 'package:event_app/screens/privateparty_screen.dart';
+import 'package:event_app/screens/drawer_screen.dart';
 import 'package:event_app/screens/profile_screen.dart';
 import 'package:event_app/utils/app_colors.dart';
+import 'package:event_app/utils/show_forms.dart';
+import 'package:event_app/utils/util_function.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -111,7 +114,9 @@ class _MainScreenState extends State<MainScreen> {
                   FloatingActionButton(
                       backgroundColor: Color(0xff5669FF),
                       child: Icon(Icons.add),
-                      onPressed: () {}),
+                      onPressed: () {
+                        ShowForms.showForm(context);
+                      }),
                   BottomNavTile(
                     text: "Friends",
                     icon: "friends.png",
