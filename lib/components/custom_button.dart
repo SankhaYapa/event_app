@@ -17,6 +17,7 @@ class CustomButton extends StatelessWidget {
   final double height;
   final double width;
   final bool isLoading;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
