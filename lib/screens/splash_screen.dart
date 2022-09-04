@@ -1,8 +1,10 @@
+import 'package:event_app/providers/user_provider.dart';
 import 'package:event_app/screens/auth_screens/login_screen.dart';
 import 'package:event_app/utils/constant.dart';
 import 'package:event_app/utils/util_function.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -16,9 +18,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 5), () {
-      // Provider.of<UserProvider>(context, listen: false)
-      //     .initializerUser(context);
-      UtilFunction.navigateTo(context, SignInPage());
+      Provider.of<UserProvider>(context, listen: false)
+          .initializerUser(context);
     });
   }
   // @override

@@ -2,12 +2,15 @@ import 'package:event_app/components/custom_button.dart';
 import 'package:event_app/components/custom_icon.dart';
 import 'package:event_app/components/custom_text.dart';
 import 'package:event_app/components/custome_textfield.dart';
+import 'package:event_app/providers/login_provider.dart';
+import 'package:event_app/providers/user_provider.dart';
 import 'package:event_app/screens/auth_screens/forgotpassword_screen.dart';
 import 'package:event_app/screens/auth_screens/registration_screen.dart';
 import 'package:event_app/screens/main_screens/main_screen.dart';
 import 'package:event_app/utils/util_function.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -22,7 +25,8 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
+          child: Consumer<LoginProvider>(
+        builder: (context, value, child) => Container(
           padding: const EdgeInsets.symmetric(vertical: 33, horizontal: 13),
           // height: UtilFunction.windoSize(context).height,
           // width: UtilFunctions.windoSize(context).width,
@@ -50,6 +54,7 @@ class _SignInPageState extends State<SignInPage> {
               ),
               CustomTextField(
                 preffix: Icon(Icons.email_outlined),
+                controller: value.emailController,
               ),
               SizedBox(
                 height: 10,
@@ -57,7 +62,7 @@ class _SignInPageState extends State<SignInPage> {
               SizedBox(
                 width: double.infinity,
                 child: TextField(
-                  //  controller: value.passwordController,
+                  controller: value.passwordController,
                   obscureText: isObscure,
                   decoration: InputDecoration(
                       fillColor: Colors.white,
@@ -84,8 +89,8 @@ class _SignInPageState extends State<SignInPage> {
               CustomButton(
                   //isLoading: true,
                   onTap: () async {
-                    // value.startLogin(context);
-                    UtilFunction.navigateTo(context, MainScreen());
+                    value.startLogin(context);
+                    //UtilFunction.navigateTo(context, MainScreen());
                   },
                   text: 'SIGN IN'),
               SizedBox(
@@ -131,7 +136,7 @@ class _SignInPageState extends State<SignInPage> {
             ],
           ),
         ),
-      ),
+      )),
     );
   }
 }

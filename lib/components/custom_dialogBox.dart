@@ -1,20 +1,26 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class DialogBox {
+class CustomAwesomDialog {
   Future<dynamic> dialogBox(
     BuildContext context,
-    DialogType dialogType,
-    String title,
-    String desc,
+    final _title,
+    final _desc,
+    DialogType _type,
   ) async {
     return AwesomeDialog(
       context: context,
-      dialogType: dialogType,
+      dialogType: _type,
       animType: AnimType.BOTTOMSLIDE,
-      title: title,
-      desc: desc,
+      title: _title,
+      desc: _desc,
+      btnOkColor: Colors.blue,
+      buttonsTextStyle: GoogleFonts.poppins(
+          color: Colors.red, fontSize: 15, fontWeight: FontWeight.bold),
+      //btnCancelOnPress: () {},
+
       btnOkOnPress: () {},
-    )..show();
+    ).show();
   }
 }
