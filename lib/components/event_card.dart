@@ -11,9 +11,11 @@ class EventCard extends StatelessWidget {
   const EventCard({
     Key? key,
     required this.model,
+    required this.imageLink,
   }) : super(key: key);
   //
   final EventModel? model;
+  final String imageLink;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -23,6 +25,7 @@ class EventCard extends StatelessWidget {
             context,
             EventDetails(
               model: model,
+              imageLink: imageLink,
             ));
       },
       child: SizedBox(
@@ -36,11 +39,11 @@ class EventCard extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(10),
                 child: CustomNetworkImage(
-                    fit: BoxFit.fill,
-                    height: 100,
-                    width: 100,
-                    url:
-                        "https://topnotchtalent.com/wp-content/uploads/holiday-party-entertainment-top-notch-talent.jpg"),
+                  fit: BoxFit.fill,
+                  height: 100,
+                  width: 100,
+                  url: imageLink,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),

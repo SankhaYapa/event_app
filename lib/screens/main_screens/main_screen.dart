@@ -1,8 +1,10 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:dropdown_button2/custom_dropdown_button2.dart';
 import 'package:event_app/components/custom_icon.dart';
 import 'package:event_app/components/custom_images.dart';
 import 'package:event_app/components/custom_svg.dart';
 import 'package:event_app/components/custom_text.dart';
+import 'package:event_app/components/custome_textfield.dart';
 import 'package:event_app/screens/friendslist_screen.dart';
 import 'package:event_app/screens/general_party_screen.dart';
 import 'package:event_app/screens/privateparty_screen.dart';
@@ -21,7 +23,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 1;
+  int _currentIndex = 0;
   final List<Widget> _screens = [
     const GeneralPartyPage(),
     const PrivatePartyScreen(),
@@ -102,7 +104,7 @@ class _MainScreenState extends State<MainScreen> {
                     },
                   ),
                   BottomNavTile(
-                    text: "Event",
+                    text: "Privat",
                     icon: "event.png",
                     isSelected: _currentIndex == 1,
                     ontap: () {
@@ -128,8 +130,8 @@ class _MainScreenState extends State<MainScreen> {
                     },
                   ),
                   BottomNavTile(
-                    text: "Settings",
-                    icon: "settings.png",
+                    text: "Account",
+                    icon: "profilee.png",
                     isSelected: _currentIndex == 3,
                     ontap: () {
                       setState(() {
@@ -143,6 +145,57 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
       ),
+    );
+    showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+      context: context,
+      builder: (context) {
+        List<bool> _selections = List.generate(3, (_) => false);
+        return Container(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                CustomText(
+                  text: "Add Event",
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                CustomTextField(),
+                SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                CustomDropdownButton2(
+                  hint: selectedValue!,
+                  dropdownItems: items,
+                  value: selectedValue,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedValue = value;
+                      print(selectedValue);
+                      Navigator.pop(context);
+                    });
+                  },
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 70,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

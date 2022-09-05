@@ -11,9 +11,11 @@ class EventDetails extends StatefulWidget {
   EventDetails({
     Key? key,
     required this.model,
+    required this.imageLink,
   }) : super(key: key);
 
   EventModel? model;
+  String imageLink;
 
   @override
   State<EventDetails> createState() => _EventDetailsState();
@@ -34,9 +36,9 @@ class _EventDetailsState extends State<EventDetails> {
                   width: double.infinity,
                   height: MediaQuery.of(context).size.height / 3,
                   child: CustomNetworkImage(
-                      fit: BoxFit.fill,
-                      url:
-                          "https://topnotchtalent.com/wp-content/uploads/holiday-party-entertainment-top-notch-talent.jpg"),
+                    fit: BoxFit.fill,
+                    url: widget.imageLink,
+                  ),
                 ),
                 Align(
                   alignment: Alignment.topLeft,

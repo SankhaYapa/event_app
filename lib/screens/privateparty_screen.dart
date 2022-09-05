@@ -14,7 +14,8 @@ class _PrivatePartyScreenState extends State<PrivatePartyScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff5669FF),
-        title: Center(child: Text('Events')),
+        title: Center(child: Text('Private events and Partys')),
+        automaticallyImplyLeading: false,
       ),
       body: SafeArea(
         child: Column(
@@ -34,6 +35,8 @@ class _PrivatePartyScreenState extends State<PrivatePartyScreen> {
                 itemCount: 10, //value.allItems.length,
                 itemBuilder: (context, index) => EventCard(
                   model: null,
+                  imageLink:
+                      "https://topnotchtalent.com/wp-content/uploads/holiday-party-entertainment-top-notch-talent.jpg",
                   // rname: value.allRooms[index].rname,
                   //model: value.allItems[index],
                 ),

@@ -1,5 +1,7 @@
+import 'package:dropdown_button2/custom_dropdown_button2.dart';
 import 'package:event_app/components/custom_button.dart';
 import 'package:event_app/components/custom_text.dart';
+import 'package:event_app/screens/drawer_screen.dart';
 import 'package:event_app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -20,6 +22,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         title: Text('Profile'),
       ),
+      drawer: DrawerScreen(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Container(

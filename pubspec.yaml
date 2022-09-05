@@ -47,6 +47,7 @@ dependencies:
   logger: ^1.1.0
   image_picker: ^0.8.5+3
   provider: ^6.0.3
+  dropdown_button2: ^1.7.2
 
 dev_dependencies:
   flutter_test:
