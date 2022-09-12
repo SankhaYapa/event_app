@@ -12,7 +12,9 @@ class AddEvent extends StatefulWidget {
   State<AddEvent> createState() => _AddEventState();
 }
 
-DateTime selectedDate = DateTime.now();
+DateTime? selectedDate;
+DateTime? selectedSTime;
+DateTime? selectedETime;
 
 class _AddEventState extends State<AddEvent> {
   @override
@@ -42,35 +44,84 @@ class _AddEventState extends State<AddEvent> {
               Row(
                 children: [
                   CustomText(text: "Event Date : "),
-                  IconButton(
-                    onPressed: () async {
-                      final DateTime? picked = await showDatePicker(
-                          context: context,
-                          initialDate: selectedDate,
-                          firstDate: DateTime(2015, 8),
-                          lastDate: DateTime(2101));
-                      if (picked != null && picked != selectedDate) {
-                        setState(() {
-                          selectedDate = picked;
-                        });
-                      }
-                    },
-                    icon: Icon(
-                      Icons.date_range_outlined,
-                    ),
-                  )
+                  (selectedDate == null)
+                      ? IconButton(
+                          onPressed: () async {
+                            final DateTime? picked = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2015, 8),
+                                lastDate: DateTime(2101));
+                            if (picked != null && picked != selectedDate) {
+                              setState(() {
+                                selectedDate = picked;
+                              });
+                            }
+                          },
+                          icon: Icon(
+                            Icons.date_range_outlined,
+                          ),
+                        )
+                      : GestureDetector(
+                          onTap: () async {
+                            final DateTime? picked = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2015, 8),
+                                lastDate: DateTime(2101));
+                            if (picked != null && picked != selectedDate) {
+                              setState(() {
+                                selectedDate = picked;
+                              });
+                            }
+                          },
+                          child: CustomText(
+                            text:
+                                "${selectedDate!.year.toString()} / ${selectedDate!.month.toString()} / ${selectedDate!.day.toString()}",
+                          ),
+                        ),
                 ],
               ),
 
               Row(
                 children: [
-                  CustomText(text: "Start time : "),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.date_range_outlined,
-                    ),
-                  )
+                  CustomText(text: "Start Time : "),
+                  (selectedDate == null)
+                      ? IconButton(
+                          onPressed: () async {
+                            final DateTime? picked = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2015, 8),
+                                lastDate: DateTime(2101));
+                            if (picked != null && picked != selectedDate) {
+                              setState(() {
+                                selectedDate = picked;
+                              });
+                            }
+                          },
+                          icon: Icon(
+                            Icons.date_range_outlined,
+                          ),
+                        )
+                      : GestureDetector(
+                          onTap: () async {
+                            final DateTime? picked = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2015, 8),
+                                lastDate: DateTime(2101));
+                            if (picked != null && picked != selectedDate) {
+                              setState(() {
+                                selectedDate = picked;
+                              });
+                            }
+                          },
+                          child: CustomText(
+                            text:
+                                "${selectedDate!.year.toString()} / ${selectedDate!.month.toString()} / ${selectedDate!.day.toString()}",
+                          ),
+                        ),
                 ],
               ),
 

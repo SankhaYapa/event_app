@@ -73,14 +73,10 @@ class DatabaseController {
     try {
       DocumentSnapshot snapshot = await users.doc(id).get();
       Logger().i(snapshot.data());
-
       // UserModel userModel =
       //     UserModel.fromJson(snapshot.data() as Map<String, dynamic>);
-      print("object6");
       UserModel userModel =
           UserModel.fromMap(snapshot.data() as Map<String, dynamic>);
-
-      print("object7");
       //Logger().d(userModel.toString());
       return userModel;
     } catch (e) {

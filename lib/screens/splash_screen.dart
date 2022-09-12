@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(Duration(seconds: 1), () {
       Provider.of<UserProvider>(context, listen: false)
           .initializerUser(context);
     });
@@ -34,6 +34,8 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        color: Colors.black,
+        padding: EdgeInsets.all(60),
         child: Center(
           child: Image.asset(Constants.iconAssets('logo.png')),
         ),

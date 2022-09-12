@@ -44,7 +44,6 @@ class UserProvider extends ChangeNotifier {
 
   //initialize user function
   Future<void> initializerUser(BuildContext context) async {
-    print("object");
     FirebaseAuth.instance.authStateChanges().listen((User? user) async {
       if (user == null) {
         Logger().w('User is currently signed out');
